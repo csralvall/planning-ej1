@@ -10,22 +10,22 @@ import select
 import tty
 import termios
 
-X_LEN = 50
-Y_LEN = 50
-THRESH = 0.8
+X_LEN = 5
+Y_LEN = 5
+THRESH = 0.5
 m_plan = []
 
 init = [random.randint(0,X_LEN), random.randint(0,Y_LEN)]
 
 distance = 0.0
 
-while (distance < 30.0) :
+while (distance < 5.0) :
     goal = [random.randint(0,X_LEN), random.randint(0,Y_LEN)]
 
     distance = sqrt(pow(init[0]-goal[0],2)+pow(init[1]-goal[1],2))
     
 
-name_image = 'test4.jpg'
+name_image = 'test.jpg'
 
 file_datab = open('database.log','a')
 

@@ -5,10 +5,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import solutions
 
-# Import A star class
+# Import A Star class
 import A_Star
 
-EXPORT_SOL = 1
 
 # Se procesa el mapa y se obtiene el punto de inicio, final y matriz binarizada
 ## Map processing.
@@ -72,13 +71,16 @@ for i in data:
     except:
         x_grid = []
         y_grid = []
-        print "Error calculando A star"
+        print " %s : Error calculando A Star" % i[0]
         for i in range(len(path.grid)):
             for j in range(len(path.grid[0])):
                 if (path.grid[i][j] == 1):
                     y_grid.append(j)
                     x_grid.append(i)
+        plt.plot(init[0],init[1],'yo')
+        plt.plot(goal[0],goal[1],'co' )
         plt.plot(x_grid,y_grid,'ro')
+        plt.show()
 
 if (solutions.soluciones_golden == soluciones ):
     print "Soluciones correctas. Ejercicio Terminado"
