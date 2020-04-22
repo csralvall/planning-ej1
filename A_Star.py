@@ -15,8 +15,10 @@ class A_Star:
     # ----------------------------------------
 
     def make_heuristic(self, grid, goal, cost):
-      # Agregar el calculo de la matriz heuristic
+      # Agregar el calculo de la matriz heuristica
+      # No hace falta utilizar el parametro cost
       self.heuristic = [[0 for row in range(len(grid[0]))]for col in range(len(grid))]
+      print heuristic
       #
       #
       #
@@ -33,18 +35,23 @@ class A_Star:
         # Movimientos del robot
         # Si tomamos un pixel (x,y) los vectores definidos debajo
         # seran el incremento/decremento de cada eje
-        delta = [[-1,  0],  # go up
-                 [ 0, -1],  # go left
-                 [ 1,  0],  # go down
-                 [ 0,  1],  # do right
+        delta = [[-1,  0],  
+                 [ 0, -1],  
+                 [ 1,  0],  
+                 [ 0,  1],  
                  [ 1,  1],
                  [ -1, 1],
                  [  1,-1],
                  [ -1,-1]]
 
-        # Elementos de la lista open son del tipo: [f, g, h, x, y]
+        # Closed tiene la misma dimension que la matriz de mapa.
+        # Cada punto si esta en cero no esta cerrado, inicializamos
+        # todos los puntos como no cerrados
         closed = [[0 for row in range(len(self.grid[0]))]
                      for col in range(len(self.grid))]
+
+        # La matriz de accion indicara en cada punto que accion debe realizarse
+        # para conectarse con el nodo anterior.
         self.action = [[0 for row in range(len(self.grid[0]))]
                           for col in range(len(self.grid))]
 
@@ -52,6 +59,7 @@ class A_Star:
         closed[self.init[0]][self.init[1]] = 1
 
         # Inicializar el primer elemento de la lista de abiertos con el punto inicial
+        # Elementos de la lista open son del tipo: [f, g, h, x, y]
         x = self.init[0]
         y = self.init[1]
         h = self.heuristic[x][y]
