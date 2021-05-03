@@ -18,9 +18,13 @@ class A_Star:
       from math import sqrt
       # Agregar el calculo de la matriz heuristica
       # No hace falta utilizar el parametro cost
-      self.heuristic = [[ sqrt((col-self.goal[0])**2+(row-self.goal[1])**2)
+      # Distancia Manhattan
+      self.heuristic = [[ (abs(col-self.goal[0])+abs(row-self.goal[1]))
           for row in range(len(grid[0]))]for col in range(len(grid))]
-      print self.heuristic
+      # Distancia Euclidea
+      #self.heuristic = [[ sqrt((col-self.goal[0])**2+(row-self.goal[1])**2)
+      #   for row in range(len(grid[0]))]for col in range(len(grid))]
+      #print self.heuristic
       #
       #
       #
