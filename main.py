@@ -45,42 +45,44 @@ for i in data:
     # Creamos el objeto A_Star
     path = A_Star.A_Star(m_plan,init,goal)
     # Aplicamos el algoritmo segun la matriz, punto de inicio y punto final
-    try:
-        path.astar()
-        # Suavizamos el trayecto
-        path.smooth(0.5,0.15)
-        path_hard = path.path
-        path_soft = path.spath
-        # Plot grid and path
-        x_soft = np.array(path_soft)[0::,0]
-        y_soft = np.array(path_soft)[0::,1]
-        x_hard = np.array(path_hard)[0::,0]
-        y_hard = np.array(path_hard)[0::,1]
-        x_grid = []
-        y_grid = []
-        for i in range(len(path.grid)):
-            for j in range(len(path.grid[0])):
-                if (path.grid[i][j] == 1):
-                    y_grid.append(j)
-                    x_grid.append(i)
-        soluciones.append(path.path)
-        plt.plot(x_grid,y_grid,'ro')
-        plt.plot(x_soft,y_soft,'bo-')
-        plt.plot(x_hard,y_hard,'go-')
-        plt.show()
-    except:
-        x_grid = []
-        y_grid = []
-        print " %s : Error calculando A Star" % i[0]
-        for i in range(len(path.grid)):
-            for j in range(len(path.grid[0])):
-                if (path.grid[i][j] == 1):
-                    y_grid.append(j)
-                    x_grid.append(i)
-        plt.plot(init[0],init[1],'yo')
-        plt.plot(goal[0],goal[1],'co' )
-        plt.plot(x_grid,y_grid,'ro')
-        plt.show()
+#    try:
+    path.astar()
+    # Suavizamos el trayecto
+    path.smooth(0.5,0.15)
+    path_hard = path.path
+    path_soft = path.spath
+    print('path_soft: {}'.format(path_soft))
+    print('path_hard: {}'.format(path_hard))
+    # Plot grid and path
+    x_soft = np.array(path_soft)[0::,0]
+    y_soft = np.array(path_soft)[0::,1]
+    x_hard = np.array(path_hard)[0::,0]
+    y_hard = np.array(path_hard)[0::,1]
+    x_grid = []
+    y_grid = []
+    for i in range(len(path.grid)):
+        for j in range(len(path.grid[0])):
+            if (path.grid[i][j] == 1):
+                y_grid.append(j)
+                x_grid.append(i)
+    soluciones.append(path.path)
+    plt.plot(x_grid,y_grid,'ro')
+    plt.plot(x_soft,y_soft,'bo-')
+    plt.plot(x_hard,y_hard,'go-')
+    plt.show()
+#    except:
+#        x_grid = []
+#        y_grid = []
+#        print " %s : Error calculando A Star" % i[0]
+#        for i in range(len(path.grid)):
+#            for j in range(len(path.grid[0])):
+#                if (path.grid[i][j] == 1):
+#                    y_grid.append(j)
+#                    x_grid.append(i)
+#        plt.plot(init[0],init[1],'yo')
+#        plt.plot(goal[0],goal[1],'co' )
+#        plt.plot(x_grid,y_grid,'ro')
+#        plt.show()
 
 if (solutions.soluciones_golden == soluciones ):
     print "Soluciones correctas. Ejercicio Terminado"
